@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kingdom Chronicles - 2D Sidescroller Adventure</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="assets/logo.png">
+</head>
+<body>
+    <!-- Background Image -->
+    <div class="background-container">
+        <div class="background-overlay"></div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Game Logo and Title -->
+        <div class="logo-container">
+            <div class="logo-wrapper">
+                <!-- Your Logo from assets -->
+                <div class="logo-image">
+                    <img src="assets/logo.png" alt="Kingdom Chronicles Logo" class="game-logo">
+                </div>
+                <h1 class="game-title">KINGDOM <span class="title-highlight">CHRONICLES</span></h1>
+                <p class="game-subtitle">2D Sidescroller Adventure</p>
+                <div class="game-tagline">
+                    <span class="pixel-text">Save the Kingdom • Defeat the Darkness • Become a Legend</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Game Stats Counter -->
+        <div class="stats-counter">
+            <div class="stat">
+                <span class="stat-number" id="heroesCount">0</span>
+                <span class="stat-label">Heroes Online</span>
+            </div>
+            <div class="stat">
+                <span class="stat-number" id="demonsSlain">0</span>
+                <span class="stat-label">Demons Slain</span>
+            </div>
+            <div class="stat">
+                <span class="stat-number" id="kingdomsSaved">0</span>
+                <span class="stat-label">Kingdoms Saved</span>
+            </div>
+        </div>
+
+        <!-- Main Action Buttons -->
+        <div class="action-buttons">
+            <button class="btn btn-primary btn-lg" id="startBtn">
+                <i class="fas fa-play-circle"></i> START ADVENTURE
+            </button>
+            
+            <button class="btn btn-secondary btn-lg" id="continueBtn" style="display: none;">
+                <i class="fas fa-history"></i> CONTINUE QUEST
+            </button>
+            
+            <div class="button-group">
+                <button class="btn btn-outline" id="settingsBtn">
+                    <i class="fas fa-cog"></i> Settings
+                </button>
+                <button class="btn btn-outline" id="creditsBtn">
+                    <i class="fas fa-users"></i> Credits
+                </button>
+                <button class="btn btn-outline" id="exitBtn">
+                    <i class="fas fa-door-open"></i> Exit
+                </button>
+            </div>
+        </div>
+
+        <!-- Game Features -->
+        <div class="features">
+            <div class="feature">
+                <i class="fas fa-dungeon"></i>
+                <h3>Epic Dungeons</h3>
+                <p>Explore 10 unique levels</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-dragon"></i>
+                <h3>Fierce Bosses</h3>
+                <p>Battle monstrous creatures</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-gem"></i>
+                <h3>Rich Loot</h3>
+                <p>Collect powerful items</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-chart-line"></i>
+                <h3>Live Telemetry</h3>
+                <p>Track your progress</p>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="game-footer">
+            <p>© 2024 Kingdom Chronicles | Developed by Team Project</p>
+            <p class="footer-links">
+                <a href="terms.html" id="termsLink">Terms & Conditions</a> | 
+                <a href="#" id="privacyLink">Privacy Policy</a> | 
+                <a href="#" id="contactLink">Contact</a>
+            </p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-discord"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+                <a href="#"><i class="fab fa-github"></i></a>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Settings Modal -->
+    <div class="modal" id="settingsModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-cog"></i> Game Settings</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="settings-section">
+                    <h3>Audio</h3>
+                    <div class="setting">
+                        <label>Master Volume</label>
+                        <input type="range" min="0" max="100" value="80" class="volume-slider">
+                        <span class="volume-value">80%</span>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary">Save Settings</button>
+                <button class="btn btn-outline close-modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Credits Modal -->
+    <div class="modal" id="creditsModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-users"></i> Development Team</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="team-grid">
+                    <div class="team-member">
+                        <div class="member-role">Project Lead</div>
+                        <div class="member-name">Darsh</div>
+                    </div>
+                    <div class="team-member">
+                        <div class="member-role">Data Lead</div>
+                        <div class="member-name">Kim</div>
+                    </div>
+                    <div class="team-member">
+                        <div class="member-role">Test Lead</div>
+                        <div class="member-name">Alex</div>
+                    </div>
+                    <div class="team-member">
+                        <div class="member-role">Software Lead</div>
+                        <div class="member-name">Ivy</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-content">
+            <div class="loading-logo">
+                <i class="fas fa-crown fa-spin"></i>
+            </div>
+            <h2>Loading Kingdom Chronicles</h2>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <p class="loading-text" id="loadingText">Initializing game engine...</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

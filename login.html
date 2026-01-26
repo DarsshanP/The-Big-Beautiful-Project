@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Kingdom Chronicles</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="background-container">
+        <div class="background-overlay"></div>
+    </div>
+
+    <div class="auth-container">
+        <!-- Left Panel - Game Info -->
+        <div class="auth-info-panel">
+            <a href="index.html" class="auth-back-button">
+                <i class="fas fa-arrow-left"></i> Back to Main Menu
+            </a>
+            
+            <div class="auth-logo">
+                <div class="logo-image">
+                    <img src="assets/logo.png" alt="Kingdom Chronicles Logo" class="game-logo">
+                </div>
+                <h1>Kingdom Chronicles</h1>
+                <p class="auth-tagline">Your Adventure Awaits</p>
+            </div>
+
+            <div class="feature-list">
+                <div class="feature-item">
+                    <i class="fas fa-check-circle"></i>
+                    <span>No subscription required</span>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Cross-platform progress saving</span>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Regular content updates</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Panel - Login/Register Forms -->
+        <div class="auth-form-panel">
+            <!-- Login Form (Default) -->
+            <div class="auth-form active" id="loginForm">
+                <div class="form-header">
+                    <h2><i class="fas fa-sign-in-alt"></i> Welcome Back, Hero!</h2>
+                    <p>Sign in to continue your quest</p>
+                </div>
+
+                <form id="loginFormElement">
+                    <div class="form-group">
+                        <label for="loginUsername">
+                            <i class="fas fa-user"></i> Username or Email
+                        </label>
+                        <input type="text" id="loginUsername" placeholder="Enter your username or email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="loginPassword">
+                            <i class="fas fa-lock"></i> Password
+                        </label>
+                        <div class="password-input">
+                            <input type="password" id="loginPassword" placeholder="Enter your password" required>
+                            <button type="button" class="toggle-password" id="toggleLoginPassword">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="form-options">
+                        <label class="checkbox-option">
+                            <input type="checkbox" id="rememberMe">
+                            <span class="checkmark"></span>
+                            Remember me
+                        </label>
+                        <a href="#" class="forgot-password" id="forgotPasswordLink">
+                            Forgot password?
+                        </a>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-block" id="loginSubmitBtn">
+                        <i class="fas fa-dragon"></i> Enter the Kingdom
+                    </button>
+
+                    <div class="form-footer">
+                        <p>New to the kingdom? <a href="#" id="showRegisterLink">Create an account</a></p>
+                    </div>
+                </form>
+
+                <div class="demo-credentials">
+                    <h4><i class="fas fa-key"></i> Demo Accounts</h4>
+                    <div class="demo-account">
+                        <strong>Admin:</strong> admin / admin123
+                    </div>
+                    <div class="demo-account">
+                        <strong>User:</strong> player1 / player123
+                    </div>
+                </div>
+            </div>
+
+            <!-- Register Form -->
+            <div class="auth-form" id="registerForm">
+                <div class="form-header">
+                    <h2><i class="fas fa-user-plus"></i> Join the Adventure</h2>
+                    <p>Create your hero's account</p>
+                </div>
+
+                <form id="registerFormElement">
+                    <div class="form-group">
+                        <label for="regUsername">
+                            <i class="fas fa-user"></i> Username
+                        </label>
+                        <input type="text" id="regUsername" placeholder="Choose a username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="regEmail">
+                            <i class="fas fa-envelope"></i> Email
+                        </label>
+                        <input type="email" id="regEmail" placeholder="Enter your email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="regPassword">
+                            <i class="fas fa-lock"></i> Password
+                        </label>
+                        <div class="password-input">
+                            <input type="password" id="regPassword" placeholder="Create a password" required>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-block" id="registerSubmitBtn">
+                        <i class="fas fa-feather-alt"></i> Begin Adventure
+                    </button>
+
+                    <div class="form-footer">
+                        <p>Already have an account? <a href="#" id="showLoginLink">Sign in instead</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
