@@ -33,6 +33,10 @@
 body {
     font-family: 'VT323', monospace;
     background-color: var(--earth-dark);
+    background-image: url('assets/background.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
     color: var(--text-light);
     min-height: 100vh;
     overflow-x: hidden;
