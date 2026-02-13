@@ -48,8 +48,8 @@ export class ArcherEnemy extends Phaser.Physics.Matter.Sprite {
     this.footSensor = footSensor;
 
     // Stats
-    this.maxHealth = 3;
-    this.health = 3;
+    this.maxHP = 15;
+    this.hp = 15;
     this.isDead = false;
 
     // Sword overlap guard
@@ -205,12 +205,12 @@ export class ArcherEnemy extends Phaser.Physics.Matter.Sprite {
   takeDamage(amount) {
     if (this.isDead) return;
 
-    this.health -= amount;
+    this.hp -= amount;
 
     this.setTint(0xff0000);
     this.scene.time.delayedCall(100, () => this.clearTint());
 
-    if (this.health <= 0) this.die();
+    if (this.hp <= 0) this.die();
   }
 
   stun(ms = 600) {

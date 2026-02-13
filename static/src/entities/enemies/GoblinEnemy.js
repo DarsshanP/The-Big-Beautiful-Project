@@ -52,8 +52,8 @@ export class GoblinEnemy extends Phaser.Physics.Matter.Sprite {
     scene.matter.world.on('collisionend', this.handleCollEnd, this);
 
     // Stats 
-    this.maxHealth = 3;
-    this.health = 3;
+    this.maxHP = 30;
+    this.hp = 30;
     this.isDead = false;
 
     this.lastHitAttackId = -1;
@@ -397,12 +397,12 @@ export class GoblinEnemy extends Phaser.Physics.Matter.Sprite {
   takeDamage(amount) {
     if (this.isDead) return;
 
-    this.health -= amount;
+    this.hp -= amount;
 
     this.setTint(0xff0000);
     this.scene.time.delayedCall(100, () => this.clearTint());
 
-    if (this.health <= 0) this.die();
+    if (this.hp <= 0) this.die();
   }
 
   die() {

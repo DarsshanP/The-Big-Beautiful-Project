@@ -9,6 +9,7 @@ import { PeasantNpc } from "../entities/npc/peasantNpc.js";
 import { DialogueUI } from "../ui/DialogueUI.js";
 import { KnightNpc } from "../entities/npc/knightNpc.js";
 import { CATS } from "../utils/physicsCategories.js";
+import { getDifficultyConfig } from "../config/difficulty.js";
 
 const AssetKeys = {
   BACKGROUND: 'background',
@@ -52,6 +53,11 @@ export class LevelOne extends Phaser.Scene {
 
     this.sentDeath = false;
     this.inCutscene = true;
+
+    this.difficulty = getDifficultyConfig();
+    console.log(this.difficulty.id);
+    console.log(this.difficulty.enemyDamageMult);
+    console.log(this.difficulty.enemyHpMult);
 
     // Telemetry Data
     this.stageStartMs = performance.now();
@@ -97,6 +103,10 @@ export class LevelOne extends Phaser.Scene {
     this.npcs.push(new KnightNpc(this, 9470, 1036));
 
     this.player = new Mplayer(this, 0, 972).setDepth(1000);
+
+    // this.testEnemy = new GoblinEnemy(this, 300, 972, { target: this.player, groundLayer: this.groundLayer });
+    // this.applyEnemyDifficulty(this.testEnemy);
+    // console.log(this.testEnemy.hp);
 
     this.interactKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.E);
 
@@ -171,12 +181,14 @@ export class LevelOne extends Phaser.Scene {
         // goblin melee sensor hits player
         if (objA === this.player && bodyB?.isEnemyMeleeHitbox) {
           const owner = bodyB.owner;
-          this.player.receiveHit({ damage: 8, source: { x: owner?.x ?? this.player.x, y: owner?.y ?? this.player.y }, canBeParried: true });
+          const dmg = Math.round(8 * (this.difficulty.playerIncomingDamageMult ?? 1));
+          this.player.receiveHit({ damage: dmg, source: { x: owner?.x ?? this.player.x, y: owner?.y ?? this.player.y }, canBeParried: true });
           this.maybeLogDeath("Goblin");
         }
         else if (objB === this.player && bodyA?.isEnemyMeleeHitbox) {
           const owner = bodyA.owner;
-          this.player.receiveHit({ damage: 8, source: { x: owner?.x ?? this.player.x, y: owner?.y ?? this.player.y }, canBeParried: true });
+          const dmg = Math.round(8 * (this.difficulty.playerIncomingDamageMult ?? 1));
+          this.player.receiveHit({ damage: dmg, source: { x: owner?.x ?? this.player.x, y: owner?.y ?? this.player.y }, canBeParried: true });
           this.maybeLogDeath("Goblin");
         }
 
@@ -187,7 +199,8 @@ export class LevelOne extends Phaser.Scene {
 
           objB.destroy();
 
-          this.player.receiveHit({ damage: 10, source: { x: srcX, y: srcY }, canBeParried: true });
+          const dmg = Math.round(5 * (this.difficulty.playerIncomingDamageMult ?? 1));
+          this.player.receiveHit({ damage: dmg, source: { x: srcX, y: srcY }, canBeParried: true });
           this.maybeLogDeath("projectile");
         }
         else if (objB === this.player && objA?.isEnemyProjectile) {
@@ -196,7 +209,8 @@ export class LevelOne extends Phaser.Scene {
 
           objA.destroy();
 
-          this.player.receiveHit({ damage: 10, source: { x: srcX, y: srcY }, canBeParried: true });
+          const dmg = Math.round(5 * (this.difficulty.playerIncomingDamageMult ?? 1));
+          this.player.receiveHit({ damage: dmg, source: { x: srcX, y: srcY }, canBeParried: true });
           this.maybeLogDeath("projectile");
         }
       }
@@ -216,7 +230,7 @@ export class LevelOne extends Phaser.Scene {
     if (enemy.lastHitAttackId === this.player.attackId) return;
     enemy.lastHitAttackId = this.player.attackId;
 
-    enemy.takeDamage(100);
+    enemy.takeDamage(this.player.dmg);
   }
 
   createParallax() {
@@ -261,6 +275,13 @@ export class LevelOne extends Phaser.Scene {
     return this.groundLayer;
   }
 
+  applyEnemyDifficulty(enemy) {
+    const mult = this.difficulty.enemyHpMult ?? 1;
+
+    if (typeof enemy.maxHp === "number") enemy.maxHp = Math.round(enemy.maxHp * mult);
+    if (typeof enemy.hp === "number") enemy.hp = Math.round(enemy.hp * mult);
+  }
+
   spawnEnemies() {
     if (!this.map) {
       console.warn("spawnEnemies(): this.map is missing (createWorld didn't store it)");
@@ -280,12 +301,16 @@ export class LevelOne extends Phaser.Scene {
     const archerSpawns = archerLayer?.objects ?? [];
 
     goblinSpawns.forEach(obj => {
-      this.enemies.push(new GoblinEnemy(this, obj.x, obj.y, { target: this.player, groundLayer: this.groundLayer }));
+      const enemy = new GoblinEnemy(this, obj.x, obj.y, { target: this.player, groundLayer: this.groundLayer });
+      this.applyEnemyDifficulty(enemy);
+      this.enemies.push(enemy);
       this.stageState.enemiesRemaining += 1;
     });
 
     archerSpawns.forEach(obj => {
-      this.enemies.push(new ArcherEnemy(this, obj.x, obj.y, { target: this.player, groundLayer: this.groundLayer }));
+      const enemy = new ArcherEnemy(this, obj.x, obj.y, { target: this.player, groundLayer: this.groundLayer });
+      this.applyEnemyDifficulty(enemy);
+      this.enemies.push(enemy);
       this.stageState.enemiesRemaining += 1;
     });
   }

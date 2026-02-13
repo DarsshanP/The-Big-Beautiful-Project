@@ -45,8 +45,8 @@ export class Mplayer extends Phaser.Physics.Matter.Sprite {
 
 
     // Stats
-    this.maxHP = 5000;
-    this.hp = 5000;
+    this.maxHP = 50;
+    this.hp = 50;
 
     this.maxSt = 30;
     this.st = 30;
@@ -80,6 +80,7 @@ export class Mplayer extends Phaser.Physics.Matter.Sprite {
     this.attackStage = 0;
     this.comboQueued = false;
     this.attackId = 0;
+    this.dmg = 7;
 
     this.flipX = true;
 
