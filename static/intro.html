@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pixel Adventure | Terms & Conditions</title>
+    <title>Adventure | Terms & Conditions</title>
     <link rel="stylesheet" href="/static/css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,24 +12,24 @@
     <link rel="icon" type="image/x-icon" href="/static/assets/logo.png">
 </head>
 <body class="pixel-bg">
-    <!-- Pixel Border Frame -->
+    <!-- Pixel Frame -->
     <div class="pixel-border frame-top"></div>
     <div class="pixel-border frame-right"></div>
     <div class="pixel-border frame-bottom"></div>
     <div class="pixel-border frame-left"></div>
     
-    <!-- CRT Scanline Effect -->
+    <!-- Scanline -->
     <div class="crt-overlay"></div>
     
     <div class="container pixel-container">
-        <!-- Pixel Logo -->
+        <!-- Logo -->
         <div class="pixel-logo-container">
             <div class="pixel-logo-frame">
                 <div class="pixel-logo-inner">
                     <img src="/static/assets/logo.png" alt="Pixel Adventure" class="pixel-logo">
                     <div class="pixel-title">
                         <h1 class="pixel-text">SIDESCROLLER</h1>
-                        <h2 class="pixel-subtitle">PIXEL ADVENTURE</h2>
+                        <h2 class="pixel-subtitle">ADVENTURE</h2>
                     </div>
                 </div>
             </div>
@@ -38,11 +38,11 @@
         <div class="action-buttons" style="text-align:center; margin-top: 28px;">
             <button class="pixel-btn pixel-btn-primary" id="startBtn">
                 <span class="btn-icon">▶</span>
-                <span class="btn-text">START</span>
+                <span class="btn-text">PLAY</span>
             </button>
         </div>
     
-        <!-- Version Number -->
+        <!-- Version -->
         <div class="version-number">v1.0.0</div>
     </div>
 
@@ -50,7 +50,7 @@
     <div id="helpModal" class="pixel-modal">
         <div class="pixel-modal-content">
             <div class="pixel-modal-header">
-                <h3 class="pixel-modal-title">NEED HELP?</h3>
+                <h3 class="pixel-modal-title">HELP</h3>
                 <button class="pixel-close" onclick="closeHelp()">&times;</button>
             </div>
             <div class="pixel-modal-body">
@@ -62,13 +62,13 @@
                     </div>
                     <div class="help-option pixel-box-small">
                         <div class="help-icon">📧</div>
-                        <h4 class="help-title">CONTACT</h4>
-                        <p class="help-desc">support@pixeladventure.game</p>
+                        <h4 class="help-title">SUPPORT</h4>
+                        <p class="help-desc">support@adventure.game</p>
                     </div>
                     <div class="help-option pixel-box-small">
                         <div class="help-icon">👥</div>
-                        <h4 class="help-title">COMMUNITY</h4>
-                        <p class="help-desc">Join our pixel community</p>
+                        <h4 class="help-title">DISCORD</h4>
+                        <p class="help-desc">Hop in and say hi</p>
                     </div>
                 </div>
             </div>
@@ -79,19 +79,19 @@
     <div id="loadingScreen" class="pixel-loading">
         <div class="loading-content">
             <div class="pixel-loader"></div>
-            <h3 class="loading-title">LOADING ADVENTURE...</h3>
-            <p class="loading-subtitle">PREPARING PIXEL WORLD</p>
+            <h3 class="loading-title">LOADING...</h3>
+            <p class="loading-subtitle">BOOTING UP</p>
             <div class="loading-bar">
                 <div class="progress-fill" id="progressFill"></div>
             </div>
-            <p class="loading-text" id="loadingText">Initializing pixel engine...</p>
+            <p class="loading-text" id="loadingText">Starting game...</p>
         </div>
     </div>
 
-    <!-- Pixel Particles Background -->
+    <!-- Particles -->
     <div class="particles-container"></div>
 
-    <!-- ONLY ONE SCRIPT TAG -->
+    <!-- Script -->
     <script src="/static/js/app.js"></script>
 </body>
 </html>

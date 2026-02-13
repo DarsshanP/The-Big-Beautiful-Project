@@ -1,9 +1,4 @@
 #!/usr/bin/env python3
-"""
-Test runner script for The Big Beautiful Project test suite.
-
-This script provides an easy interface to run tests with various options.
-"""
 import subprocess
 import sys
 import argparse
