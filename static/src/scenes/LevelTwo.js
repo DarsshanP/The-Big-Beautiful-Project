@@ -136,10 +136,13 @@ export class LevelTwo extends Phaser.Scene {
     this.events.on('player:stChanged', (st, maxSt) => this.hud.setStamina(st / maxSt));
 
     this.uiCam.ignore([
-      this.background, this.dune1, this.dune2, this.dune3,
-      groundLayer,
-      this.player,
+    this.background, this.dune1, this.dune2, this.dune3,
+    this.groundLayer,
+    this.treesDecor,
+    this.dmgSources,
+    this.player,
     ]);
+
     
 
     this.scale.on('resize', (size) => this.uiCam.setSize(size.width, size.height));
